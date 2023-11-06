@@ -6,7 +6,7 @@ const RootLayout = () => {
   setStatusBarStyle("dark");
 
   return (
-    <Drawer>
+    <Drawer screenOptions={{ headerShown: false }}>
       <Drawer.Screen
         name="index"
         options={{
