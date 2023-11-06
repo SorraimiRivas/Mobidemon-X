@@ -15,3 +15,9 @@ export function getFullSizePokemonImage(id: number): string {
   const paddedId = getPaddedPokemonId(id);
   return `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${paddedId}.png`;
 }
+
+export const prettyPrint = (data: any) =>
+  console.log(JSON.stringify(data, null, 2));
+
+
+  
