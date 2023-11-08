@@ -1,22 +1,25 @@
-import { Drawer } from "expo-router/drawer";
-import { MaterialIcons } from "@expo/vector-icons";
 import { setStatusBarStyle } from "expo-status-bar";
+import { Stack } from "expo-router";
 
 const RootLayout = () => {
-  setStatusBarStyle("dark");
+  setStatusBarStyle("auto");
 
   return (
-    <Drawer screenOptions={{ headerShown: false }}>
-      <Drawer.Screen
+    <Stack
+      screenOptions={{
+        headerShown: false,
+        gestureEnabled: true,
+        gestureDirection: "horizontal",
+        animation: "simple_push",
+      }}
+    >
+      <Stack.Screen
         name="index"
         options={{
           title: "Home",
-          drawerIcon: ({ size, color }) => (
-            <MaterialIcons name="home" size={size} color={color} />
-          ),
         }}
       />
-    </Drawer>
+    </Stack>
   );
 };
 

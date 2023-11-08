@@ -1,4 +1,4 @@
-import { Text, Pressable, Image } from "react-native";
+import { Text, Pressable } from "react-native";
 import {
   getPaddedPokemonId,
   getPokemonImage,
@@ -7,6 +7,7 @@ import {
 import { Pokemon } from "../../lib/types";
 import colors from "../../lib/colors";
 import { useRouter } from "expo-router";
+import { Image } from "expo-image";
 
 const PokemonCard = ({ name, id, types }: Pokemon) => {
   const router = useRouter();
@@ -16,7 +17,10 @@ const PokemonCard = ({ name, id, types }: Pokemon) => {
   const colorByType = types[0].type.name;
 
   const handleOnpress = () => {
-    router.push(`/(drawer)/${id}`);
+    router.push({
+      pathname: `/(drawer)/${id}`,
+      params: { type: colorByType, image: pokemonImage },
+    });
   };
 
   return (
@@ -29,7 +33,7 @@ const PokemonCard = ({ name, id, types }: Pokemon) => {
         source={{ uri: pokemonImage }}
         alt={pokemonName}
         className="top-2 w-28 flex-1"
-        style={{ resizeMode: "cover" }}
+        contentFit="cover"
       />
       <Text
         className="absolute right-2 top-1 font-semibold"
