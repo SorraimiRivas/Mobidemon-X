@@ -7,7 +7,6 @@ import { MaterialIcons } from "@expo/vector-icons";
 import colors from "../../lib/colors";
 import { MAX_POKEMON_ID } from "../../lib/constants";
 import PokemonList from "../../components/pokemon/PokemonList";
-import Animated, { SlideInRight } from "react-native-reanimated";
 import Constants from "expo-constants";
 import { Image } from "expo-image";
 
@@ -46,7 +45,6 @@ const Home = () => {
             source={require("../../assets/svgs/Pokeball.svg")}
             className="bg-red mr-4 h-8 w-8 rounded-full"
             contentFit="cover"
-            transition={{ duration: 1000, effect: "cross-dissolve" }}
           />
           <Text className="text-3xl font-extrabold">Pokédex</Text>
         </View>
@@ -57,22 +55,20 @@ const Home = () => {
       </View>
       <View className="relative">
         {!focus ? (
-          <Animated.View
-            layout={SlideInRight.duration(1000)}
+          <View
             className="absolute bottom-0 right-[40%] top-0 z-10 flex flex-row items-center pl-4 pr-4"
             pointerEvents="none"
           >
             <MaterialIcons name="search" size={25} color={colors.gray[700]} />
             <Text className="ml-2 text-xl text-gray-700">Search</Text>
-          </Animated.View>
+          </View>
         ) : (
-          <Animated.View
-            layout={SlideInRight.duration(1000)}
+          <View
             className="absolute top-[6px] z-10 flex flex-row items-center pl-7 pr-4"
             pointerEvents="none"
           >
             <MaterialIcons name="search" size={25} color={colors.gray[700]} />
-          </Animated.View>
+          </View>
         )}
         <TextInput
           onFocus={handleFocus}
